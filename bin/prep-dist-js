@@ -1,0 +1,4 @@
+#!/bin/bash
+babel \
+src/js \
+--out-dir dist/js

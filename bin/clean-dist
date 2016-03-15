@@ -1,0 +1,3 @@
+#!/bin/bash
+rm -rf dist/css dist/js \
+&& mkdir dist/css dist/js
