@@ -37,14 +37,14 @@ export default class Carousel extends Component {
   }
 
   componentWillMount() {
-    if(window) {
+    if(typeof window !== "undefined") {
       window.addEventListener("resize", this.updateSizes);
       window.addEventListener("DOMContentLoaded", this.updateSizes);
     }
   }
 
   componentWillUnmount() {
-    if(window) {
+    if(typeof window !== "undefined") {
       window.removeEventListener("resize", this.updateSizes);
       window.removeEventListener("DOMContentLoaded", this.updateSizes);
     }
