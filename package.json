@@ -6,7 +6,7 @@
     "name": "Gianluca Candiotti",
     "url": "gianluca.prwlr@gmail.com"
   },
-  "main": "dist/dist.js",
+  "main": "dist/js/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/GianlucaCandiotti/yar-carousel"
