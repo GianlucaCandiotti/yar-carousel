@@ -3,8 +3,8 @@ browserify \
 -x react \
 -x react-dom \
 -g uglifyify \
-dev/app.js \
+dev/dev.js \
 | uglifyjs \
 --compress warnings=false \
 --mangle \
--o build/js/app.js
+-o build/js/dev.js

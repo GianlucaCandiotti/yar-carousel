@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default ({children}) => (
-  <li className="slide">
-    {children}
+export default (props) => (
+  <li className={props.cssClasses}>
+    {props.children}
   </li>
 );

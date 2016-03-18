@@ -3,5 +3,5 @@ node-sass \
 --include-path src/scss \
 --source-map true \
 --watch \
-src/scss/app.scss \
+src/scss/dev.scss \
 -o build/css

@@ -6,4 +6,4 @@ browserify \
 | uglifyjs \
 --compress warnings=false \
 --mangle \
--o build/vendor/app-vendor.js
+-o build/vendor/dev-vendor.js

@@ -2,5 +2,5 @@
 node-sass \
 --include-path src/scss \
 --output-style compressed \
-src/scss/app.scss \
+src/scss/dev.scss \
 -o build/css

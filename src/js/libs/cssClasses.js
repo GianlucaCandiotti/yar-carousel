@@ -3,36 +3,30 @@ import classNames from 'classnames';
 export default {
   CAROUSEL: (isSlider) => (
     classNames({
+      "yar-carousel": true,
       "carousel": true,
-      "carousel-slider": isSlider
-    })
-  ),
-  WRAPPER: (isSlider, axis) => (
-    classNames({
-      "thumbs-wrapper": !isSlider,
-      "slides-wrapper": isSlider,
-      "axis-horizontal": axis === "horizontal",
-      "axis-vertical": axis !== "horizontal"
+      "has-slides": isSlider,
+      "has-thumbs": !isSlider
     })
   ),
   SLIDER: (isSlider, isSwiping) => (
     classNames({
-      "thumbs": !isSlider,
-      "slides": isSlider,
+      "yar-carousel-thumbs": !isSlider,
+      "yar-carousel-slides": isSlider,
       "is-animated": !isSwiping
     })
   ),
   ITEM: (isSlider, selected) => (
     classNames({
-      "thumb": !isSlider,
-      "slide": isSlider,
+      "yar-carousel-thumb": !isSlider,
+      "yar-carousel-slide": isSlider,
       "is-selected": selected
     })
   ),
   DOT: (selected) => (
     classNames({
-      "carousel-nav-dot": true,
-      'is-selected': selected
+      "yar-carousel-nav-dot": true,
+      "is-selected": selected
     })
   )
 };

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import Carousel from '../pure/Carousel';
 import NavDots from '../pure/NavDot';
 
@@ -24,11 +25,12 @@ export default class CarouselContainer extends Component {
   }
 
   state = {
-    selectedItem: this.props.selectedItem
+    selectedItem: this.props.selectedItem,
   }
 
   componentDidMount() {
     this.startAutoplay();
+    this.updateSizes();
   }
 
   componentWillReceiveProps(props, state) {
@@ -37,6 +39,20 @@ export default class CarouselContainer extends Component {
       this.setState({
         selectedItem: props.selectedItem
       });
+    }
+  }
+
+  componentWillMount() {
+    if(typeof window !== "undefined") {
+      window.addEventListener("resize", this.updateSizes);
+      window.addEventListener("DOMContentLoaded", this.updateSizes);
+    }
+  }
+
+  componentWillUnmount() {
+    if(typeof window !== "undefined") {
+      window.removeEventListener("resize", this.updateSizes);
+      window.removeEventListener("DOMContentLoaded", this.updateSizes);
     }
   }
 
@@ -56,6 +72,12 @@ export default class CarouselContainer extends Component {
     this.setState({
       autoplayInterval
     });
+  }
+
+  updateSizes = () => {
+    const firstItem = this.Carousel.item0;
+    this.itemSize = firstItem.clientWidth;
+    this.wrapperSize = this.itemSize * this.props.children.length;
   }
 
   handleOnMouseEnter = () => {
@@ -116,6 +138,49 @@ export default class CarouselContainer extends Component {
     this.handleOnChange(state.selectedItem, this.props.children[state.selectedItem]);
   }
 
+  onSwipeStart = () => {
+    this.setState({
+      isSwiping: true
+    });
+  }
+
+  onSwipeEnd = () => {
+    this.setState({
+      isSwiping: false
+    });
+  }
+
+  onSwipeMove = (delta) => {
+    const {
+      selectedItem
+    } = this.state;
+
+    const list            = ReactDOM.findDOMNode(this.Carousel.itemList),
+          currentPosition = - selectedItem * 100,
+          initialBoundary = 0,
+          finalBoundary   = - (this.props.children.length - 1) * 100;
+
+    let axisDelta = delta.x;
+
+    if (currentPosition === initialBoundary && axisDelta > 0 ||
+        currentPosition === finalBoundary && axisDelta < 0) {
+        axisDelta = 0;
+    }
+
+    const position = currentPosition + (100 / (this.wrapperSize / axisDelta)) + '%';
+
+    [
+      'WebkitTransform',
+      'MozTransform',
+      'MsTransform',
+      'OTransform',
+      'transform',
+      'msTransform'
+    ].forEach((prop) => {
+        list.style[prop] = `translate3d(${position }, 0, 0)`;
+    });
+  }
+
   render() {
     const {
       children,
@@ -125,7 +190,8 @@ export default class CarouselContainer extends Component {
     } = this.props;
 
     const {
-      selectedItem
+      selectedItem,
+      isSwiping
     } = this.state
 
     const options = {
@@ -143,11 +209,18 @@ export default class CarouselContainer extends Component {
       slideNext: this.slideNext,
       moveTo: this.moveTo,
       changeItem: this.changeItem,
-      selectItem: this.selectItem
+      selectItem: this.selectItem,
+      onSwipeStart: this.onSwipeStart,
+      onSwipeEnd: this.onSwipeEnd,
+      onSwipeMove: this.onSwipeMove
+    };
+
+    const uiState = {
+      isSwiping
     };
 
     return (
-      <Carousel options={options} actions={actions} selectedItem={selectedItem}>
+      <Carousel ref={node => this.Carousel = node} options={options} actions={actions} uiState={uiState} selectedItem={selectedItem}>
         {children}
       </Carousel>
     );

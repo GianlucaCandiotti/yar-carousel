@@ -2,8 +2,8 @@
 watchify \
 -x react \
 -x react-dom \
-dev/app.js \
--o build/js/app.js \
+dev/dev.js \
+-o build/js/dev.js \
 --poll \
 --debug \
 --verbose
