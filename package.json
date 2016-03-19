@@ -56,8 +56,7 @@
     "watch-css": "./bin/watch-css",
     "build": "npm run clean && npm run build-vendor-js && npm run build-js && npm run build-css",
     "prep-dist": "npm run clean-dist && npm run prep-dist-js && npm run prep-dist-css",
-    "watch": "parallelshell 'npm run watch-js' 'npm run watch-css'",
-    "prepublish": "npm run prep-dist"
+    "watch": "parallelshell 'npm run watch-js' 'npm run watch-css'"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
