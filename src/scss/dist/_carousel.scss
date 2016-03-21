@@ -30,6 +30,29 @@
   min-width: 100%;
 }
 
+.yar-carousel-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 9999;
+  &:focus, &:active {
+    outline: none;
+  }
+  &.is-left {
+    left: 25px;
+  }
+  &.is-right {
+    right: 25px;
+  }
+}
+
 .yar-carousel-nav-dots {
   position: absolute;
   bottom: 10px;

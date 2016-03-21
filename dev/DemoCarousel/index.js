@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DemoCarousel from './DemoCarousel';
 
-export default (function() {
-  const mount_point = document.getElementById('mount-point');
+export default (function mountDemoCarousel() {
+  const mountPoint = document.getElementById('mount-point');
 
-  if(mount_point) {
+  if (mountPoint) {
     ReactDOM.render(
       <DemoCarousel />,
-      mount_point
+      mountPoint
     );
   }
 }());

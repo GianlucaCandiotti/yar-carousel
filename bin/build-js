@@ -2,6 +2,7 @@
 browserify \
 -x react \
 -x react-dom \
+--extension .jsx \
 -g uglifyify \
 dev/dev.js \
 | uglifyjs \

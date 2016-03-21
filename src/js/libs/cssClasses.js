@@ -1,32 +1,39 @@
 import classNames from 'classnames';
 
 export default {
-  CAROUSEL: (isSlider) => (
+  carousel: (isSlider) => (
     classNames({
-      "yar-carousel": true,
-      "carousel": true,
-      "has-slides": isSlider,
-      "has-thumbs": !isSlider
+      'yar-carousel': true,
+      carousel: true,
+      'has-slides': isSlider,
+      'has-thumbs': !isSlider,
     })
   ),
-  SLIDER: (isSlider, isSwiping) => (
+  slider: (isSlider, isSwiping) => (
     classNames({
-      "yar-carousel-thumbs": !isSlider,
-      "yar-carousel-slides": isSlider,
-      "is-animated": !isSwiping
+      'yar-carousel-thumbs': !isSlider,
+      'yar-carousel-slides': isSlider,
+      'is-animated': !isSwiping,
     })
   ),
-  ITEM: (isSlider, selected) => (
+  item: (isSlider, selected) => (
     classNames({
-      "yar-carousel-thumb": !isSlider,
-      "yar-carousel-slide": isSlider,
-      "is-selected": selected
+      'yar-carousel-thumb': !isSlider,
+      'yar-carousel-slide': isSlider,
+      'is-selected': selected,
     })
   ),
-  DOT: (selected) => (
+  arrow: (direction) => (
     classNames({
-      "yar-carousel-nav-dot": true,
-      "is-selected": selected
+      'yar-carousel-nav-arrow': true,
+      'is-left': direction === 'left',
+      'is-right': direction === 'right',
     })
-  )
+  ),
+  dot: (selected) => (
+    classNames({
+      'yar-carousel-nav-dot': true,
+      'is-selected': selected,
+    })
+  ),
 };

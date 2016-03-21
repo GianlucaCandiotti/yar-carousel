@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "react/jsx-no-bind": [2, {
+      "ignoreRefs": true
+    }],
+    'react/no-string-refs': 2
+  }
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+eslint \
+--ext .jsx, .js \
+src/js/**/* \
+dev/**/*; \
+exit 0

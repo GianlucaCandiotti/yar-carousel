@@ -2,6 +2,7 @@
 watchify \
 -x react \
 -x react-dom \
+--extension .jsx \
 dev/dev.js \
 -o build/js/dev.js \
 --poll \
