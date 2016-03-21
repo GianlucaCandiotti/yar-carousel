@@ -113,10 +113,11 @@ export default class Carousel extends Component {
 
   render() {
     const {
+      selectedItem,
       slides,
       options,
       actions,
-      selectedItem,
+      uiState,
     } = this.props;
 
     const itemsLength = slides.length;
@@ -155,8 +156,8 @@ export default class Carousel extends Component {
     return (
       <div
         className={cssClasses.carousel(true)}
-        onMouseEnter={actions.onMouseEnter}
-        onMouseLeave={actions.onMouseLeave}
+        onMouseEnter={uiState.isTouched ? actions.onMouseEnter : null}
+        onMouseLeave={uiState.isTouched ? actions.onMouseLeave : null}
         onTouchStart={actions.onTouchStart}
         onTouchEnd={actions.onTouchEnd}
         onTouchCancel={actions.onTouchCancel}

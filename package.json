@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "react-easy-swipe": "0.0.3"
+    "react-easy-swipe": "^0.0.4"
   },
   "keywords": [
     "react",

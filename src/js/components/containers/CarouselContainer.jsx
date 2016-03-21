@@ -28,10 +28,12 @@ export default class CarouselContainer extends Component {
   state = {
     selectedItem: this.props.selectedItem,
     slidesLength: null,
+    isSwiping: false,
+    isTouched: false,
   }
 
   componentWillMount() {
-    if (!window) {
+    if (typeof window !== 'undefined') {
       window.addEventListener('resize', this.updateSizes);
       window.addEventListener('DOMContentLoaded', this.updateSizes);
     }
@@ -52,7 +54,7 @@ export default class CarouselContainer extends Component {
   }
 
   componentWillUnmount() {
-    if (!window) {
+    if (typeof window !== 'undefined') {
       window.removeEventListener('resize', this.updateSizes);
       window.removeEventListener('DOMContentLoaded', this.updateSizes);
     }
@@ -66,16 +68,24 @@ export default class CarouselContainer extends Component {
     this.startAutoplay();
   }
 
-  onTouchStart = (e) => {
-    e.preventDefault();
+  onTouchStart = () => {
+    this.setState({
+      isTouched: true,
+    });
     clearInterval(this.state.autoplayInterval);
   }
 
   onTouchEnd = () => {
+    this.setState({
+      isTouched: false,
+    });
     this.startAutoplay();
   }
 
   onTouchCancel = () => {
+    this.setState({
+      isTouched: false,
+    });
     this.startAutoplay();
   }
 
