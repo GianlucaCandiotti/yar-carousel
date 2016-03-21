@@ -2,21 +2,26 @@ import React from 'react';
 import { Carousel, Slide, NavArrow } from '../../src/js/index';
 
 export default function DemoCarousel() {
+  const options = {
+    autoplay: true,
+    intervalTime: 2000,
+  };
+
   return (
-    <Carousel>
+    <Carousel {...options}>
       <NavArrow direction={"left"}>
         <span>
           {'<'}
         </span>
       </NavArrow>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'red' }}></div>
+        <img className="carousel-image" src={"https://placeholdit.imgix.net/~text?txtsize=33&txt=750%C3%97500&w=750&h=500"} />
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'blue' }}></div>
+        <img className="carousel-image" src={"https://placeholdit.imgix.net/~text?txtsize=33&txt=750%C3%97500&w=750&h=500"} />
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'yellow' }}></div>
+        <img className="carousel-image" src={"https://placeholdit.imgix.net/~text?txtsize=33&txt=750%C3%97500&w=750&h=500"} />
       </Slide>
       <NavArrow direction={"right"}>
         <span>

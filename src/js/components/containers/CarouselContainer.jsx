@@ -61,7 +61,17 @@ export default class CarouselContainer extends Component {
   }
 
   onMouseEnter = () => {
-    clearInterval(this.state.autoplayInterval);
+    const {
+      isTouched,
+    } = this.state;
+
+    if (isTouched) {
+      this.setState({
+        isTouched: false,
+      });
+    } else {
+      clearInterval(this.state.autoplayInterval);
+    }
   }
 
   onMouseLeave = () => {
@@ -76,16 +86,10 @@ export default class CarouselContainer extends Component {
   }
 
   onTouchEnd = () => {
-    this.setState({
-      isTouched: false,
-    });
     this.startAutoplay();
   }
 
   onTouchCancel = () => {
-    this.setState({
-      isTouched: false,
-    });
     this.startAutoplay();
   }
 
