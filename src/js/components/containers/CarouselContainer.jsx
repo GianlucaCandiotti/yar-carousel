@@ -66,6 +66,19 @@ export default class CarouselContainer extends Component {
     this.startAutoplay();
   }
 
+  onTouchStart = (e) => {
+    e.preventDefault();
+    clearInterval(this.state.autoplayInterval);
+  }
+
+  onTouchEnd = () => {
+    this.startAutoplay();
+  }
+
+  onTouchCancel = () => {
+    this.startAutoplay();
+  }
+
   onClickItem = (item, index) => {
     const handler = this.props.onClickItem;
 
@@ -238,6 +251,9 @@ export default class CarouselContainer extends Component {
     const actions = {
       onMouseEnter: this.onMouseEnter,
       onMouseLeave: this.onMouseLeave,
+      onTouchStart: this.onTouchStart,
+      onTouchEnd: this.onTouchEnd,
+      onTouchCancel: this.onTouchCancel,
       onClickItem: this.onClickItem,
       onChange: this.onChange,
       onSwipeStart: this.onSwipeStart,

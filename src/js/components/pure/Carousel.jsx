@@ -157,6 +157,9 @@ export default class Carousel extends Component {
         className={cssClasses.carousel(true)}
         onMouseEnter={actions.onMouseEnter}
         onMouseLeave={actions.onMouseLeave}
+        onTouchStart={actions.onTouchStart}
+        onTouchEnd={actions.onTouchEnd}
+        onTouchCancel={actions.onTouchCancel}
       >
         {renderLeftNavArrow}
         <div style={{ height: '100%' }}>
