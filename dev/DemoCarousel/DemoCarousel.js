@@ -3,8 +3,7 @@ import { Carousel, Slide, NavArrow } from '../../src/js/index';
 
 export default function DemoCarousel() {
   const options = {
-    autoplay: true,
-    intervalTime: 2000,
+    showNavArrows: true,
   };
 
   return (

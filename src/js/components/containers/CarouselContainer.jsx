@@ -212,6 +212,7 @@ export default class CarouselContainer extends Component {
   }
 
   slideNext = (positions) => {
+    console.log(positions);
     this.moveTo(this.state.selectedItem + (typeof positions === 'number' ? positions : 1));
   }
 
@@ -248,6 +249,7 @@ export default class CarouselContainer extends Component {
 
   render() {
     const {
+      children,
       showNavDots,
       showNavArrows,
     } = this.props;
@@ -284,16 +286,20 @@ export default class CarouselContainer extends Component {
       isSwiping,
     };
 
-    const slides = [];
     const navArrows = [];
+    let slides = [];
 
-    React.Children.forEach(this.props.children, (item) => {
-      if (item.type.name === 'Slide') {
-        slides.push(item);
-      } else if (item.type.name === 'NavArrow') {
-        navArrows.push(item);
-      }
-    });
+    if (showNavArrows) {
+      React.Children.forEach(children, (item, i) => {
+        if (i === 0 || i === React.Children.count(children) - 1) {
+          navArrows.push(item);
+        } else {
+          slides.push(item);
+        }
+      });
+    } else {
+      slides = React.Children.toArray(children);
+    }
 
     return (
       <Carousel
