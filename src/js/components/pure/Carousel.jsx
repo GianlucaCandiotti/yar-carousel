@@ -28,7 +28,6 @@ export default class Carousel extends Component {
       slideNext: PropTypes.func,
       moveTo: PropTypes.func,
       changeItem: PropTypes.func,
-      selectItem: PropTypes.func,
     }),
     uiState: PropTypes.shape({
       isSwiping: PropTypes.bool,
@@ -149,8 +148,8 @@ export default class Carousel extends Component {
       ref: ref => {this.itemList = ref;},
     };
 
-    const renderLeftNavArrow = canShowNavArrows ? this.renderNavArrow('left') : '';
-    const renderRightNavArrow = canShowNavArrows ? this.renderNavArrow('right') : '';
+    const renderLeftNavArrow = canShowNavArrows ? this.renderNavArrow('left') : null;
+    const renderRightNavArrow = canShowNavArrows ? this.renderNavArrow('right') : null;
 
     return (
       <div

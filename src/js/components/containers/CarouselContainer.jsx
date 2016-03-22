@@ -163,18 +163,23 @@ export default class CarouselContainer extends Component {
 
   updateSizes = () => {
     const {
+      children,
+      showNavArrows,
+    } = this.props;
+
+    const {
       slidesLength,
     } = this.state;
 
     let length = slidesLength;
 
     if (!length) {
-      const slides = this.props.children.filter(item => (
-        item.type.name === 'Slide'
-      ));
-
-      length = slides.length;
-
+      const count = React.Children.count(children);
+      if (showNavArrows) {
+        length = count - 2;
+      } else {
+        length = count;
+      }
       this.setState({
         slidesLength: length,
       });
@@ -212,7 +217,6 @@ export default class CarouselContainer extends Component {
   }
 
   slideNext = (positions) => {
-    console.log(positions);
     this.moveTo(this.state.selectedItem + (typeof positions === 'number' ? positions : 1));
   }
 
@@ -243,8 +247,19 @@ export default class CarouselContainer extends Component {
   }
 
   selectItem = (state) => {
+    const {
+      children,
+      showNavArrows,
+    } = this.props;
+
+    let index = state.selectedItem;
+
+    if (showNavArrows) {
+      index++;
+    }
+
     this.setState(state);
-    this.onChange(state.selectedItem, this.props.children[state.selectedItem]);
+    this.onChange(children[index], index);
   }
 
   render() {
@@ -279,26 +294,24 @@ export default class CarouselContainer extends Component {
       slideNext: this.slideNext,
       moveTo: this.moveTo,
       changeItem: this.changeItem,
-      selectItem: this.selectItem,
     };
 
     const uiState = {
       isSwiping,
     };
 
-    const navArrows = [];
+    const childrenArr = React.Children.toArray(children);
     let slides = [];
+    let navArrows = [];
 
     if (showNavArrows) {
-      React.Children.forEach(children, (item, i) => {
-        if (i === 0 || i === React.Children.count(children) - 1) {
-          navArrows.push(item);
-        } else {
-          slides.push(item);
-        }
-      });
+      navArrows = [
+        children[0],
+        children[children.length - 1],
+      ];
+      slides = children.slice(1, -1);
     } else {
-      slides = React.Children.toArray(children);
+      slides = [...children];
     }
 
     return (
@@ -306,7 +319,7 @@ export default class CarouselContainer extends Component {
         ref={ref => {this.Carousel = ref;}}
         selectedItem={selectedItem}
         slides={slides}
-        navArrows={navArrows}
+        navArrows={showNavArrows ? navArrows : null}
         options={options}
         actions={actions}
         uiState={uiState}
