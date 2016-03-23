@@ -8,7 +8,7 @@ export default class CarouselContainer extends Component {
     intervalTime: 3000,
     selectedItem: 0,
     showNavDots: true,
-    showNavArrows: true,
+    showNavArrows: false,
   }
 
   static propTypes = {
