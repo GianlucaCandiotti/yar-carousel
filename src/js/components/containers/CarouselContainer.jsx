@@ -306,12 +306,12 @@ export default class CarouselContainer extends Component {
 
     if (showNavArrows) {
       navArrows = [
-        children[0],
-        children[children.length - 1],
+        childrenArr[0],
+        childrenArr[children.length - 1],
       ];
-      slides = children.slice(1, -1);
+      slides = childrenArr.slice(1, -1);
     } else {
-      slides = [...children];
+      slides = [...childrenArr];
     }
 
     return (
