@@ -3,7 +3,7 @@ import { Carousel, Slide, NavArrow } from '../../src/js/index';
 
 export default function DemoCarousel() {
   return (
-    <Carousel autoplay>
+    <Carousel autoplay showNavArrows>
       <NavArrow direction={"left"}>
         <span>
           {'<'}
