@@ -23,6 +23,8 @@ export default class CarouselContainer extends Component {
     showNavArrows: PropTypes.bool,
     onClickItem: PropTypes.func,
     onChange: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    onTouchEnd: PropTypes.func,
     onSwipeStart: PropTypes.func,
     onSwipeEnd: PropTypes.func,
   }
@@ -81,13 +83,26 @@ export default class CarouselContainer extends Component {
   }
 
   onTouchStart = () => {
+    const handler = this.props.onTouchStart;
+
+    if (typeof handler === 'function') {
+      handler();
+    }
+
     this.setState({
       isTouched: true,
     });
+
     clearInterval(this.state.autoplayInterval);
   }
 
   onTouchEnd = () => {
+    const handler = this.props.onTouchEnd;
+
+    if (typeof handler === 'function') {
+      handler();
+    }
+
     this.startAutoplay();
   }
 
