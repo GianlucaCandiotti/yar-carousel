@@ -23,6 +23,8 @@ export default class CarouselContainer extends Component {
     showNavArrows: PropTypes.bool,
     onClickItem: PropTypes.func,
     onChange: PropTypes.func,
+    onSwipeStart: PropTypes.func,
+    onSwipeEnd: PropTypes.func,
   }
 
   state = {
@@ -116,12 +118,24 @@ export default class CarouselContainer extends Component {
   }
 
   onSwipeStart = () => {
+    const handler = this.props.onSwipeStart;
+
+    if (typeof handler === 'function') {
+      handler();
+    }
+
     this.setState({
       isSwiping: true,
     });
   }
 
   onSwipeEnd = () => {
+    const handler = this.props.onSwipeEnd;
+
+    if (typeof handler === 'function') {
+      handler();
+    }
+
     this.setState({
       isSwiping: false,
     });
