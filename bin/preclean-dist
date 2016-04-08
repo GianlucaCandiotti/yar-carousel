@@ -1,4 +1,0 @@
-#!/bin/bash
-if [ ! -d dist ]; then \
-  mkdir -p dist/css dist/js; \
-fi

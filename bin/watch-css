@@ -1,7 +1,7 @@
 #!/bin/bash
 node-sass \
 --include-path src/scss \
---source-map true \
+--source-map 'public/build/css/app.css.map' \
 --watch \
 src/scss/dev.scss \
--o build/css
+> public/build/css/app.css

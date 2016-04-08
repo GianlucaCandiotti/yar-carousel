@@ -4,8 +4,8 @@ browserify \
 -x react-dom \
 --extension .jsx \
 -g uglifyify \
-dev/dev.js \
+dev/js/index.js \
 | uglifyjs \
 --compress warnings=false \
 --mangle \
--o build/js/dev.js
+-o public/build/js/app.js

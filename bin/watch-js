@@ -3,8 +3,8 @@ watchify \
 -x react \
 -x react-dom \
 --extension .jsx \
-dev/dev.js \
--o build/js/dev.js \
+dev/js/index.js \
+-o public/build/js/app.js \
 --poll \
 --debug \
 --verbose

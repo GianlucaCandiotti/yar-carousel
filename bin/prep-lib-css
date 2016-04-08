@@ -1,0 +1,10 @@
+#!/bin/bash
+node-sass \
+--include-path src/scss \
+src/scss/index.scss \
+> lib/css/carousel.css
+&& node-sass \
+--include-path src/scss \
+--output-style compressed \
+src/scss/index.scss \
+> lib/css/carousel.min.css

@@ -2,5 +2,7 @@
 node-sass \
 --include-path src/scss \
 --output-style compressed \
-src/scss/dev.scss \
--o build/css
+src/scss/index.scss \
+| postcss \
+--use autoprefixer \
+-o public/build/css/app.css
