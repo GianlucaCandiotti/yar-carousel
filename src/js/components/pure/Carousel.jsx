@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Swipe from 'react-easy-swipe';
-import cssClasses from '../../libs/cssClasses';
+import cssClasses from '../../utils/cssClasses';
 import Slide from './Slide';
 import NavArrow from './NavArrow';
 import NavDot from './NavDot';

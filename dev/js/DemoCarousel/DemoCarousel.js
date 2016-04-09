@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Slide, NavArrow } from '../../src/js/index';
+import { Carousel, Slide, NavArrow } from '../../../src/js/index';
 
 export default function DemoCarousel() {
   return (
@@ -13,10 +13,10 @@ export default function DemoCarousel() {
         <div className="carousel-image-background" style={{ backgroundColor: 'red' }}></div>
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'blue' }}></div>
+        <div className="carousel-image-background" style={{ backgroundColor: 'green' }}></div>
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'yellow' }}></div>
+        <div className="carousel-image-background" style={{ backgroundColor: 'blue' }}></div>
       </Slide>
       <NavArrow direction={"right"}>
         <span>
