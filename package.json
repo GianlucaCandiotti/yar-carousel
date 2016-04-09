@@ -1,6 +1,6 @@
 {
   "name": "yar-carousel",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Yet Another React Carousel",
   "author": {
     "name": "Gianluca Candiotti",
@@ -88,7 +88,7 @@
     "uglifyify": "^3.0.1",
     "watchify": "^3.7.0"
   },
-    "dependencies": {
+  "dependencies": {
     "classnames": "^2.2.3",
     "react-easy-swipe": "0.0.4"
   }
