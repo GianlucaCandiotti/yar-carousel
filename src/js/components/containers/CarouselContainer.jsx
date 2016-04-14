@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from '../pure/Carousel';
+import Carousel from '../presentational/Carousel';
 
 export default class CarouselContainer extends Component {
   static defaultProps = {

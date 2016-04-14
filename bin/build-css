@@ -5,4 +5,4 @@ node-sass \
 src/scss/index.scss \
 | postcss \
 --use autoprefixer \
--o public/build/css/app.css
+-o public/dist/css/bundle.css

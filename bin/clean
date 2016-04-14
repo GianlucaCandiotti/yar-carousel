@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -rf public/build/css public/build/js \
-&& mkdir public/build/css public/build/js
+rm -rf public/dist/css public/dist/js \
+&& mkdir public/dist/css public/dist/js

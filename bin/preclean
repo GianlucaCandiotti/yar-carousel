@@ -1,4 +1,4 @@
 #!/bin/bash
-if [ ! -d public/build ]; then \
-  mkdir -p public/build/css public/build/js; \
+if [ ! -d public/dist ]; then \
+  mkdir -p public/dist/css public/dist/js; \
 fi

@@ -4,7 +4,7 @@ watchify \
 -x react-dom \
 --extension .jsx \
 dev/js/index.js \
--o public/build/js/app.js \
+-o public/dist/js/bundle.js \
 --poll \
 --debug \
 --verbose

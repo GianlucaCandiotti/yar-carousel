@@ -8,4 +8,4 @@ dev/js/index.js \
 | uglifyjs \
 --compress warnings=false \
 --mangle \
--o public/build/js/app.js
+-o public/dist/js/bundle.js
