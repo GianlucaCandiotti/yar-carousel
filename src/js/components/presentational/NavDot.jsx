@@ -7,6 +7,10 @@ export default class NavDot extends Component {
     onClick: PropTypes.func,
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.cssClasses !== nextProps.cssClasses;
+  }
+
   onClick = () => {
     const {
       index,
@@ -22,8 +26,7 @@ export default class NavDot extends Component {
     } = this.props;
 
     return (
-      <span className={cssClasses} onClick={this.onClick}>
-      </span>
+      <span className={cssClasses} onClick={this.onClick} />
     );
   }
 }

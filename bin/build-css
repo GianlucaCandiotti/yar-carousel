@@ -2,7 +2,7 @@
 node-sass \
 --include-path src/scss \
 --output-style compressed \
-src/scss/index.scss \
+dev/scss/index.scss \
 | postcss \
 --use autoprefixer \
 -o public/dist/css/bundle.css

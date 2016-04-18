@@ -10,13 +10,13 @@ export default function DemoCarousel() {
         </span>
       </NavArrow>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'red' }}></div>
+        <div className="carousel-image-background" style={{ backgroundColor: 'red' }} />
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'green' }}></div>
+        <div className="carousel-image-background" style={{ backgroundColor: 'green' }} />
       </Slide>
       <Slide>
-        <div className="carousel-image-background" style={{ backgroundColor: 'blue' }}></div>
+        <div className="carousel-image-background" style={{ backgroundColor: 'blue' }} />
       </Slide>
       <NavArrow direction={"right"}>
         <span>

@@ -46,7 +46,7 @@
     "clean": "bin/clean",
     "preclean-lib": "bin/preclean-lib",
     "clean-lib": "bin/clean-lib",
-    "sync": "browser-sync start --server --files 'build/**/*.css, build/**/*.js'",
+    "sync": "browser-sync start --server --files 'dist/**/*.css, dist/**/*.js'",
     "lint-js": "bin/lint-js",
     "build-vendor-js": "bin/build-vendor-js",
     "build-js": "bin/build-js",
