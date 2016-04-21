@@ -12,10 +12,9 @@ export default class Carousel extends Component {
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element),
     ]),
-    navArrows: PropTypes.arrayOf(PropTypes.element),
     options: PropTypes.shape({
+      navArrows: PropTypes.object,
       showNavDots: PropTypes.bool,
-      showNavArrows: PropTypes.bool,
     }),
     actions: PropTypes.shape({
       onMouseEnter: PropTypes.func,
@@ -32,6 +31,10 @@ export default class Carousel extends Component {
     uiState: PropTypes.shape({
       isSwiping: PropTypes.bool,
     }),
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props !== nextProps;
   }
 
   renderSlides = () => {
@@ -60,23 +63,18 @@ export default class Carousel extends Component {
 
   renderNavArrow = (direction) => {
     const {
-      navArrows,
+      options,
       actions,
     } = this.props;
 
-    const navArrow = navArrows.filter((item) => (
-      item.props.direction === direction
-    ));
-
-    return navArrow.map((item, i) => (
+    return (
       <NavArrow
-        key={`nav-arrow-${i}`}
         cssClasses={cssClasses.arrow(direction)}
         onClick={direction === 'left' ? actions.slidePrev : actions.slideNext}
       >
-        {item.props.children}
+        {options.navArrows[direction]}
       </NavArrow>
-    ));
+    );
   }
 
   renderNavDots = () => {
@@ -124,7 +122,7 @@ export default class Carousel extends Component {
       return false;
     }
 
-    const canShowNavArrows = options.showNavArrows && itemsLength > 1;
+    const canShowNavArrows = options.navArrows && itemsLength > 1;
     const currentPosition = `${- selectedItem * 100}%`;
     const transformProp = `translate3d(${currentPosition}, 0, 0)`;
     const itemListStyles = {

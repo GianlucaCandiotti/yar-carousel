@@ -8,6 +8,10 @@ export default class Slide extends Component {
     onClick: PropTypes.func,
   };
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.cssClasses !== nextProps.cssClasses;
+  }
+
   onClick = () => {
     const {
       index,

@@ -2,13 +2,16 @@ import React from 'react';
 import { Carousel, Slide, NavArrow } from '../../../src/js/index';
 
 export default function DemoCarousel() {
+  const navArrows = {
+    left: '<',
+    right: '<',
+  };
+
   return (
-    <Carousel autoplay showNavArrows>
-      <NavArrow direction={"left"}>
-        <span>
-          {'<'}
-        </span>
-      </NavArrow>
+    <Carousel
+      autoplay
+      navArrows={navArrows}
+    >
       <Slide>
         <div className="carousel-image-background" style={{ backgroundColor: 'red' }} />
       </Slide>
@@ -18,11 +21,6 @@ export default function DemoCarousel() {
       <Slide>
         <div className="carousel-image-background" style={{ backgroundColor: 'blue' }} />
       </Slide>
-      <NavArrow direction={"right"}>
-        <span>
-          {'>'}
-        </span>
-      </NavArrow>
     </Carousel>
   );
 }

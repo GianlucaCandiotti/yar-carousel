@@ -7,8 +7,8 @@ export default class CarouselContainer extends Component {
     autoplay: false,
     intervalTime: 3000,
     selectedItem: 0,
+    navArrows: false,
     showNavDots: true,
-    showNavArrows: false,
   }
 
   static propTypes = {
@@ -19,8 +19,8 @@ export default class CarouselContainer extends Component {
     ]),
     autoplay: PropTypes.bool,
     intervalTime: PropTypes.number,
+    navArrows: PropTypes.object,
     showNavDots: PropTypes.bool,
-    showNavArrows: PropTypes.bool,
     onClickItem: PropTypes.func,
     onChange: PropTypes.func,
     onTouchStart: PropTypes.func,
@@ -31,7 +31,6 @@ export default class CarouselContainer extends Component {
 
   state = {
     selectedItem: this.props.selectedItem,
-    slidesLength: null,
     isSwiping: false,
     isTouched: false,
   }
@@ -158,14 +157,17 @@ export default class CarouselContainer extends Component {
 
   onSwipeMove = (delta) => {
     const {
+      children,
+    } = this.props;
+
+    const {
       selectedItem,
-      slidesLength,
     } = this.state;
 
     const list = ReactDOM.findDOMNode(this.Carousel.itemList);
     const currentPosition = - selectedItem * 100;
     const initialBoundary = 0;
-    const finalBoundary = - (slidesLength - 1) * 100;
+    const finalBoundary = - (children.length - 1) * 100;
 
     let axisDelta = delta.x;
 
@@ -193,31 +195,12 @@ export default class CarouselContainer extends Component {
   updateSizes = () => {
     const {
       children,
-      showNavArrows,
     } = this.props;
-
-    const {
-      slidesLength,
-    } = this.state;
-
-    let length = slidesLength;
-
-    if (!length) {
-      const count = React.Children.count(children);
-      if (showNavArrows) {
-        length = count - 2;
-      } else {
-        length = count;
-      }
-      this.setState({
-        slidesLength: length,
-      });
-    }
 
     const firstItem = this.Carousel.slide0;
     const itemSize = firstItem.clientWidth;
 
-    this.wrapperSize = itemSize * length;
+    this.wrapperSize = itemSize * children.length;
   }
 
   startAutoplay = () => {
@@ -251,14 +234,14 @@ export default class CarouselContainer extends Component {
 
   moveTo = (position) => {
     const {
-      slidesLength,
-    } = this.state;
+      children,
+    } = this.props;
 
     let newPosition;
 
     if (position < 0) {
-      newPosition = slidesLength - 1;
-    } else if (position >= slidesLength) {
+      newPosition = children.length - 1;
+    } else if (position >= children.length) {
       newPosition = 0;
     } else {
       newPosition = position;
@@ -278,14 +261,9 @@ export default class CarouselContainer extends Component {
   selectItem = (state) => {
     const {
       children,
-      showNavArrows,
     } = this.props;
 
-    let index = state.selectedItem;
-
-    if (showNavArrows) {
-      index++;
-    }
+    const index = state.selectedItem;
 
     this.setState(state);
     this.onChange(children[index], index);
@@ -294,8 +272,8 @@ export default class CarouselContainer extends Component {
   render() {
     const {
       children,
+      navArrows,
       showNavDots,
-      showNavArrows,
     } = this.props;
 
     const {
@@ -304,8 +282,8 @@ export default class CarouselContainer extends Component {
     } = this.state;
 
     const options = {
+      navArrows,
       showNavDots,
-      showNavArrows,
     };
 
     const actions = {
@@ -329,26 +307,13 @@ export default class CarouselContainer extends Component {
       isSwiping,
     };
 
-    const childrenArr = React.Children.toArray(children);
-    let slides = [];
-    let navArrows = [];
-
-    if (showNavArrows) {
-      navArrows = [
-        childrenArr[0],
-        childrenArr[children.length - 1],
-      ];
-      slides = childrenArr.slice(1, -1);
-    } else {
-      slides = [...childrenArr];
-    }
+    const slides = React.Children.toArray(children);
 
     return (
       <Carousel
         ref={ref => {this.Carousel = ref;}}
         selectedItem={selectedItem}
         slides={slides}
-        navArrows={showNavArrows ? navArrows : null}
         options={options}
         actions={actions}
         uiState={uiState}

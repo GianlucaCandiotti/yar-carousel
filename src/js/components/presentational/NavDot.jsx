@@ -7,7 +7,7 @@ export default class NavDot extends Component {
     onClick: PropTypes.func,
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return this.props.cssClasses !== nextProps.cssClasses;
   }
 
