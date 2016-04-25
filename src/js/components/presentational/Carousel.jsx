@@ -68,7 +68,11 @@ export default class Carousel extends Component {
     } = this.props;
 
     const navArrowContent = options.navArrows[direction].match(/\.(jpeg|jpg|svg|png)$/) !== null
-      ? <img src={options.navArrows[direction]} />
+      ? <img
+          src={options.navArrows[direction]}
+          alt="Navigation Arrow"
+          className="yar-carousel-nav-arrow-image"
+        />
       : options.navArrows[direction];
 
     return (
