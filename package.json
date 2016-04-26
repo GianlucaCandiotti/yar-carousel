@@ -41,7 +41,7 @@
     ]
   },
   "scripts": {
-    "publish": "bin/publish",
+    "release": "bin/release",
     "start-dev": "parallelshell 'npm run watch' 'npm run sync'",
     "sync": "browser-sync start --server --files 'public/dist/**/*.css, public/dist/**/*.js'",
     "preclean": "bin/preclean",
