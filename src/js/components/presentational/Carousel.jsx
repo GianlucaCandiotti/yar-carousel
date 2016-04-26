@@ -67,12 +67,20 @@ export default class Carousel extends Component {
       actions,
     } = this.props;
 
+    const navArrowContent = options.navArrows[direction].match(/\.(jpeg|jpg|svg|png)$/) !== null
+      ? <img
+          src={options.navArrows[direction]}
+          alt="Navigation Arrow"
+          className="yar-carousel-nav-arrow-image"
+        />
+      : options.navArrows[direction];
+
     return (
       <NavArrow
         cssClasses={cssClasses.arrow(direction)}
         onClick={direction === 'left' ? actions.slidePrev : actions.slideNext}
       >
-        {options.navArrows[direction]}
+        {navArrowContent}
       </NavArrow>
     );
   }
