@@ -1,7 +1,7 @@
 #!/bin/bash
-'npm run lint-js' \
-&& 'npm run prep-lib' \
-&& 'git pull origin master' \
-&& 'npm version patch' \
-&& 'git push origin master' \
-&& 'npm publish'
+npm run lint-js \
+&& npm run prep-lib \
+&& git pull origin master \
+&& npm version patch \
+&& git push origin master \
+&& npm publish
