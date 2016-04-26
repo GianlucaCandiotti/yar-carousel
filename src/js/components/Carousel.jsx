@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Swipe from 'react-easy-swipe';
-import cssClasses from '../../utils/cssClasses';
+import cssClasses from '../utils/cssClasses';
 import Slide from './Slide';
 import NavArrow from './NavArrow';
 import NavDot from './NavDot';
@@ -69,10 +69,10 @@ export default class Carousel extends Component {
 
     const navArrowContent = options.navArrows[direction].match(/\.(jpeg|jpg|svg|png)$/) !== null
       ? <img
-          src={options.navArrows[direction]}
-          alt="Navigation Arrow"
-          className="yar-carousel-nav-arrow-image"
-        />
+        src={options.navArrows[direction]}
+        alt="Navigation Arrow"
+        className="yar-carousel-nav-arrow-image"
+      />
       : options.navArrows[direction];
 
     return (
