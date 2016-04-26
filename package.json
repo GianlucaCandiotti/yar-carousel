@@ -41,23 +41,24 @@
     ]
   },
   "scripts": {
+    "publish": "bin/publish",
     "start-dev": "parallelshell 'npm run watch' 'npm run sync'",
+    "sync": "browser-sync start --server --files 'public/dist/**/*.css, public/dist/**/*.js'",
     "preclean": "bin/preclean",
     "clean": "bin/clean",
     "preclean-lib": "bin/preclean-lib",
     "clean-lib": "bin/clean-lib",
-    "sync": "browser-sync start --server --files 'public/dist/**/*.css, public/dist/**/*.js'",
     "lint-js": "bin/lint-js",
     "build-vendor-js": "bin/build-vendor-js",
     "build-js": "bin/build-js",
-    "prep-lib-js": "bin/prep-lib-js",
     "watch-js": "bin/watch-js",
+    "prep-lib-js": "bin/prep-lib-js",
     "build-css": "bin/build-css",
-    "prep-lib-css": "bin/prep-lib-css",
     "watch-css": "bin/watch-css",
+    "prep-lib-css": "bin/prep-lib-css",
     "build": "npm run clean && npm run build-vendor-js && npm run build-js && npm run build-css",
-    "prep-lib": "npm run clean-lib && npm run prep-lib-js && npm run prep-lib-css",
-    "watch": "parallelshell 'npm run watch-js' 'npm run watch-css'"
+    "watch": "parallelshell 'npm run watch-js' 'npm run watch-css'",
+    "prep-lib": "npm run clean-lib && npm run prep-lib-js && npm run prep-lib-css"
   },
   "keywords": [
     "react",
