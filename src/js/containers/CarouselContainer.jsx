@@ -7,7 +7,7 @@ export default class CarouselContainer extends Component {
     autoplay: false,
     intervalTime: 3000,
     selectedItem: 0,
-    navArrows: false,
+    navArrows: null,
     showNavDots: true,
   }
 

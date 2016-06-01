@@ -4,7 +4,7 @@ import { Carousel, Slide, NavArrow } from '../../../src/js/index';
 export default function DemoCarousel() {
   const navArrows = {
     left: '<',
-    right: 'http://uxrepo.com/static/icon-sets/flat-arrows/svg/flat-circle-chevron-right-arrow.svg',
+    right: 'http://www.clipartbest.com/cliparts/dT8/5ke/dT85kekxc.png',
   };
 
   return (
