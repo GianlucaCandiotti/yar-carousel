@@ -53,6 +53,7 @@ export default class Carousel extends Component {
         >
           <div
             ref={ref => {this[`slide${i}`] = ref;}}
+            className="yar-carousel-slide-helper"
             style={{ height: '100%' }}
           >
             {item.props.children}
@@ -167,7 +168,7 @@ export default class Carousel extends Component {
         onTouchCancel={actions.onTouchCancel}
       >
         {renderLeftNavArrow}
-        <div className="yar-carousel-slide-helper" style={{ height: '100%' }}>
+        <div style={{ height: '100%' }}>
           <Swipe {...swiperProps}>
             {this.renderSlides()}
           </Swipe>
