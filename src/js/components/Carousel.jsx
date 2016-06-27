@@ -167,7 +167,7 @@ export default class Carousel extends Component {
         onTouchCancel={actions.onTouchCancel}
       >
         {renderLeftNavArrow}
-        <div style={{ height: '100%' }}>
+        <div className="yar-carousel-slide-helper" style={{ height: '100%' }}>
           <Swipe {...swiperProps}>
             {this.renderSlides()}
           </Swipe>
